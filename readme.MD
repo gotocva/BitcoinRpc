@@ -2,11 +2,11 @@
 
 ## Crypto RPC library
 
-/***
+
 | __Cryptocurrency__ | __Coin__ | __Environment__ |
 |--------------------|----------|-----------------|
 | Bitcoin            | tbtc     | test3           |
-***/
+
 
 To create address
 
