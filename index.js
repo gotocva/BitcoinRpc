@@ -26,6 +26,17 @@ server.addMethod('CREATE_ADDRESS', async function(args,cb){
     });
 });
 
+server.addMethod('GET_BALANCE', async function(args,cb){
+    const bcyper = new BlockCyper('btc','test3'); 
+    await bcyper.getBalance(args.address)
+    .then((result) => {
+        cb(null,result);
+    })
+    .catch((error) => {
+        cb(error,null);
+    });
+});
+
 server.addMethod('CREATE_TRANSACTION', async function(args,cb){
     const bcyper = new BlockCyper('btc','test3'); 
 

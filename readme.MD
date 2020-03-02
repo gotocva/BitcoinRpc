@@ -25,6 +25,40 @@ sample response
     }
 }
 ```
+To get balance of a address
+http://127.0.0.1:5080
+
+sample params 
+``` json
+{
+	"id":1,
+	"jsonrpc":"2.0",
+	"method":"GET_BALANCE",
+	"params" : {
+    	"address" : "n3Kix7s5u2dGDbmGg1HgdwNqY3XWTE8Tqm"
+	}
+}
+```
+
+sample response 
+``` json
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "result": {
+        "address": "n3Kix7s5u2dGDbmGg1HgdwNqY3XWTE8Tqm",
+        "total_received": 54000,
+        "total_sent": 50000,
+        "balance": 4000,
+        "unconfirmed_balance": 0,
+        "final_balance": 4000,
+        "n_tx": 7,
+        "unconfirmed_n_tx": 0,
+        "final_n_tx": 7
+    }
+}
+
+```
 
 To create transaction 
 
