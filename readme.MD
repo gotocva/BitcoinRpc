@@ -8,6 +8,14 @@
 | Bitcoin            | tbtc     | test3           |
 
 
+## Implementation steps
+```
+git clone https://github.com/gotocva/CryptoRpc.git
+cd CryptoRpc
+npm install 
+node index.js
+```
+
 To create address
 
 http://127.0.0.1:5080
