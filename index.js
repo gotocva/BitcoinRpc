@@ -16,7 +16,7 @@ console.log(options)
 const server = new rpc.Server(options);
 
 server.addMethod('CREATE_ADDRESS', async function(args,cb){
-    const bcyper = new BlockCyper('btc','test3');
+    const bcyper = new BlockCyper(args.coin,args.environment);
     await bcyper.createAddress()
     .then((address) => {
         cb(null,address);
@@ -27,7 +27,7 @@ server.addMethod('CREATE_ADDRESS', async function(args,cb){
 });
 
 server.addMethod('GET_BALANCE', async function(args,cb){
-    const bcyper = new BlockCyper('btc','test3'); 
+    const bcyper = new BlockCyper(args.coin,args.environment); 
     await bcyper.getBalance(args.address)
     .then((result) => {
         cb(null,result);
@@ -38,7 +38,7 @@ server.addMethod('GET_BALANCE', async function(args,cb){
 });
 
 server.addMethod('CREATE_TRANSACTION', async function(args,cb){
-    const bcyper = new BlockCyper('btc','test3'); 
+    const bcyper = new BlockCyper(args.coin,args.environment); 
 
     if(args.amount < 0.0001){
         cb({"status":false,"error_message":"Minimum amount for transaction is 0.0001"},null);
@@ -68,65 +68,3 @@ server.start(function (error) {
       console.log('Server running ...');
     }
 });
-
-
-// server.addMethod('sendTokens', async function (args, cb) {
-//     let error, result, cAddress, address, password, to, amount;
-//     try {
-//         if (args.length === 6) {
-//             cAddress = args[0];
-//             address = args[1];
-//             password = args[2];
-//             to = args[3];
-//             amount = args[4];
-//             coin_value = args[5];
-//             result = await cntrctInterface.sendTokens(cAddress, address, password, to, amount, coin_value);
-//             cb(error, result);
-//         }
-//         else {
-//             throw new Error('Invalid Params');
-//         }
-//         cb(error, result);
-//     }
-//     catch (ex) {
-//         cb({ code: 'INTERNAL ERROR', message: ex.message });
-//     }
-// });
-// server.addMethod('getMyTokenBalance', async function (args, cb) {
-//     let error, result, cAddress, address;
-//     try {
-//         if (args.length !== 2) throw new Error('Invalid Params');
-//         cAddress = args[0];
-//         address = args[1];
-//         result = await cntrctInterface.getBalance(cAddress, address);
-//         cb(error, result);
-//     }
-//     catch (ex) {
-//         cb({ code: 'INTERNAL ERROR', message: ex.message });
-//     }
-// });
-// server.addMethod('createAddressForToken', async function (args, cb) {
-//     let error, result, password;
-//     try {
-//         if (args.length !== 1) throw new Error('Invalid Params');
-//         password = args[0];
-//         result = await cntrctInterface.createAddress(password);
-//         cb(error, result);
-//     }
-//     catch (ex) {
-//         cb({ code: 'INTERNAL ERROR', message: ex.message });
-//     }
-// });
-// server.addMethod('personal_newAccount', async function (args, cb) {
-//     let error, result, password;
-//     try {
-//         if (args.length !== 1) throw new Error('Invalid Params');
-//         password = args[0];
-//         result = await cntrctInterface.createAddress(password);
-//         cb(error, result);
-//     }
-//     catch (ex) {
-//         cb({ code: 'INTERNAL ERROR', message: ex.message });
-//     }
-// });
-// module.exports = { rpcServer: server, rpcClient: client };

@@ -1,5 +1,7 @@
 
 
+## Crypto RPC library
+
 To create address
 
 http://127.0.0.1:5080
@@ -9,7 +11,11 @@ params
 {
 	"id":1,
 	"jsonrpc":"2.0",
-	"method":"CREATE_ADDRESS"
+    "method":"CREATE_ADDRESS",
+    "params" : {
+        "coin" : "tbtc",
+        "environment" : "test3"
+    }
 }
 ```
 sample response 
@@ -35,6 +41,8 @@ sample params
 	"jsonrpc":"2.0",
 	"method":"GET_BALANCE",
 	"params" : {
+        "coin" : "tbtc",
+        "environment" : "test3",
     	"address" : "n3Kix7s5u2dGDbmGg1HgdwNqY3XWTE8Tqm"
 	}
 }
@@ -71,6 +79,8 @@ sample params
 	"jsonrpc":"2.0",
 	"method":"CREATE_TRANSACTION",
 	"params" : {
+        "coin" : "tbtc",
+        "environment" : "test3",
     	"from" : "n3Kix7s5u2dGDbmGg1HgdwNqY3XWTE8Tqm",
     	"to" : "mtcJYtesgcKZTWWoRzCaE528JHo6TgdbiA",
     	"amount" : 0.0001,
